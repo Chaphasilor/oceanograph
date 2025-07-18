@@ -4,4 +4,13 @@
 	let { children } = $props();
 </script>
 
-{@render children()}
+<div>
+    <div>
+        <a href="/">Home</a>
+        <a href="/editor">Editor</a>
+        <a href="/about">About</a>
+    </div>
+    <div>
+        {@render children()}
+    </div>
+</div>
