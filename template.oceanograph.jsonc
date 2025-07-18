@@ -1,0 +1,72 @@
+{
+  "metadata": { // not dynamic
+    "name": "Finamp",
+    "url": "https://github.com/jmshrv/finamp",
+    "platforms": {
+      "linux": false, // could also just not be there
+      "windows": true,
+      "android": ">5.1",
+      "iso": "<19"
+    },
+    "code": {
+      "languages": [
+        "Dart", "Flutter"
+      ],
+      "opensource": true,
+      "license": "MPL-2.0"
+    },
+    "cost": "free",
+    "authors": [
+      {
+        "name": "jmshrv"
+      },
+      {
+        "name": "Chaphasilor",
+        "urls": [
+          {
+            "type": "Github", // could be automatic, type also determins icon? no type= generic link icon
+            "url": "https://github.com/Caphasilor"
+          },
+          {
+            "type": "Masterdon",
+            "url": "https://toot.io/@chaphasilor"
+          }
+        ]
+      }
+    ],
+    "official": false,
+    "community": { // Alternative to author urls above
+      "Discord": "https://discord.gg/xh9SZ73jWk"
+    },
+    "releasedSince": "2021-04-09",
+    "download": {
+      "googlePlay": "https://play.google.com/store/apps/details?id=com.unicornsonlsd.finamp",
+      "fDroid": "https://f-droid.org/packages/com.unicornsonlsd.finamp/",
+      "appStore": "https://apps.apple.com/us/app/finamp/id1574922594",
+      "github": "https://github.com/jmshrv/finamp/releases/"
+    },
+    "betaManifest": "Fianmp Beta" // optional
+  },
+  "jellyfinCompatibility": {
+    "minServerVersion": "10.7",
+    "maxServerVersion": "10.11"
+  },
+  "jellyfinCapabilities": {
+    "playOn": "0.9.16",
+    "transcoding": true, // in case no version is specified
+    "lyrics": {
+      "comment": "No word by word lyrics",
+      "since": "0.9.14"
+    }
+    // ...
+  },
+  "appFeatures": {
+    "offlinePlay": true,
+    "screenReader": "0.0.0",
+    "highContrastTheme": {
+      "comment": "seaking feedback still",
+      "since": true
+    }
+    // ...
+  }
+}
