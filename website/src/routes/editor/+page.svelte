@@ -1,16 +1,25 @@
-
-
-
 <script lang="ts">
-    import { temporary_example_finampManifest, convertToJSON, convertFromJSON, convertManifestIntoNormalizedForm } from "$lib/manifest";
+    import { convertFromJSON, convertToJSON, deserializeStack, manifestToNormalizedForm } from '$lib/manifest/frontendFriendly.js';
 
 
-    let fileContent = JSON.stringify(temporary_example_finampManifest, (_, value) => value, 4)
+    export let data;
+    const manifests = deserializeStack(data.manifests)
+
+
+    let selected = ""
+    $: fileContent = data.manifests[selected]
     $: parsedContent = convertFromJSON(fileContent)
     $: reFiledContent = parsedContent ? convertToJSON(parsedContent) : "Error"
-    $: internalStructure = parsedContent ? convertManifestIntoNormalizedForm(parsedContent) : "Error"
+    $: internalStructure = parsedContent ? manifestToNormalizedForm(parsedContent) : "Error"
 </script>
 
+
+
+<select bind:value={selected}>
+    {#each Object.keys(data.manifests) as key}
+        <option>{key}</option>
+    {/each}
+</select>
 
 <div class="wrapper">
     <textarea bind:value={fileContent}  />
