@@ -1,0 +1,95 @@
+{
+    "metadata": {
+        "updated": {
+            "at": "2025-07-19T11:00:57.703Z",
+            "revisions": 1
+        },
+        "releases": [
+            {
+                "version": "0.9.18",
+                "at": null
+            }
+        ],
+        "name": "Finamp Beta",
+        "url": "https://github.com/jmshrv/finamp",
+        "platforms": {
+            "Android": true,
+            "iOS": true,
+            "Linux": true,
+            "MacOS": true,
+            "Windows": true
+        },
+        "code": {
+            "languages": [
+                "Flutter",
+                "Dart"
+            ],
+            "license": "MLP - 2.0",
+            "openSource": true
+        },
+        "cost": false,
+        "authors": [
+            {
+                "name": "jmshrv"
+            },
+            {
+                "name": "Chaphasilor",
+                "urls": [
+                    {
+                        "type": "Github",
+                        "url": "https://github.com/Chaphasilor/"
+                    },
+                    {
+                        "type": "Mastodon",
+                        "url": "https://toot.io/@chaphasilor"
+                    }
+                ]
+            }
+        ],
+        "offical": false,
+        "community": [
+            {
+                "type": "Discord",
+                "url": "https://discord.gg/xh9SZ73jWk"
+            }
+        ],
+        "downloads": [
+            {
+                "type": "Google Play",
+                "url": "https://play.google.com/store/apps/details?id=com.unicornsonlsd.finamp"
+            },
+            {
+                "type": "F-Droid",
+                "url": "https://f-droid.org/packages/com.unicornsonlsd.finamp/"
+            },
+            {
+                "type": "App Store",
+                "url": "https://apps.apple.com/us/app/finamp/id1574922594"
+            },
+            {
+                "type": "Github",
+                "url": "https://github.com/jmshrv/finamp/releases/"
+            }
+        ]
+    },
+    "jellyfinCompatibility": {
+        "minServerVersion": "9.0.0",
+        "maxServerVersion": "10.0.0"
+    },
+    "jellyfinCapabilites": {
+        "Play On": true,
+        "Synced Lyrics": {
+            "comment": "Nothing to comment on :)",
+            "since": "0.9.15"
+        },
+        "Word Synced Lyrics": {
+            "comment": "Waiting for upstream fix"
+        },
+        "Lyrics": "0.9.14",
+        "Transcoding": true
+    },
+    "appFeatures": {
+        "Offline Playback": true,
+        "Screen Reader": "0.9.18"
+    }
+}
