@@ -61,7 +61,7 @@ export interface Manifest {
         offical: boolean,
         community: cURL[],
         downloads: cURL[],
-        betaManifest?: URL,
+        betaManifest?: string,
     },
     jellyfinCompatibility: {
         minServerVersion: Version,
@@ -71,7 +71,7 @@ export interface Manifest {
     appFeatures: { [key in Features]?: Capability }
 }
 
-export interface InternalManifest {
+export interface InternalManifest<T> {
     metadata: {
         updated: {
             at: Date,
@@ -105,7 +105,7 @@ export interface InternalManifest {
         offical: boolean,
         community: cURL[],
         downloads: cURL[],
-        betaManifest?: URL,
+        betaManifest?: T,
     },
     jellyfinCompatibility: {
         minServerVersion: Version,
