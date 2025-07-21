@@ -1,69 +1,11 @@
-import { Platform, Language, Capabilities, Features, URLType } from "./types/enums"
-import type { InternalAuthor, InternalManifest, Manifest } from "./types/interfaces"
-import type { InternalManifestIndex, ManifestIndex } from "./types/types"
-
+import { Manifest, InternalManifest, Platform, InternalAuthor, Capabilities, Features, Language, URLType } from "./types.ts";
+import { toDate, toURL, enumCheck, enumCheckFlat } from "./validators.ts";
 
 export const convertToJSON = (manifest: Manifest | InternalManifest<any>, compact?: true) => JSON.stringify(manifest, (key, value) => value, compact ? 0 : 2)
 
 
-function toURL(value: string): URL {
-    try {
-        return new URL(value)
-    } catch {
-        throw Error(`"${value}" is not a valid URL`)
-    }
-}
-
-function toDate(value: string): Date {
-    const date = new Date(value)
-    if (date.toString() == "Invalid Date") {
-        throw Error(`"${value} is not a valid Date"`)
-    }
-    return date
-}
-
-function enumCheck(values: object, options: object) {
-    for (const value of Object.keys(values)) {
-        if (!(Object.values(options).includes(value))) {
-            throw Error(`"${value}" is not supported. Typo?`)
-        }
-    }
-}
-function enumCheckFlat(values: string[], options: object) {
-    for (const value of values) {
-        if (!(Object.values(options).includes(value))) {
-            throw Error(`"${value}" is not supported. Typo?`)
-        }
-    }
-}
-
-export function linkManifests(manifests: {[key: string]: InternalManifest<string>}) {
-    let linked = manifests as any
-    const isBeta: string[] = []
-
-    for (const fileName of Object.keys(manifests)) {
-        const betaFileName = manifests[fileName].metadata.betaManifest
-        console.log({a: manifests[fileName].metadata.betaManifest})
-        if (betaFileName) {
-            linked[fileName].metadata.betaManifest
-            // delete manifests[betaFileName].metadata.betaManifest
-            linked[fileName].metadata.betaManifest = manifests[betaFileName]
-            // delete manifests[betaFileName]
-            isBeta.push(betaFileName)
-        }
-    }
-
-    console.log({isBeta})
-
-    for (const beta of isBeta) {
-        delete linked[beta]
-    }
-
-    return linked as InternalManifestIndex
-}
-
 export function manifestToNormalizedForm(manifest: Manifest) {
-    let internal = manifest as any
+    const internal = manifest as any
     internal.metadata.latestRelease = manifest.metadata.releases.sort((a, b) => a.at.getTime() - b.at.getTime())
 
     const givenPlatforms = Object.keys(manifest.metadata.platforms)
@@ -143,7 +85,6 @@ export function manifestToNormalizedForm(manifest: Manifest) {
     return internal as InternalManifest<string>
 }
 
-
 export function convertFromJSON(manifest: string): Manifest | false {
     // convert strings to objects with minimal error prevention
     let input: any, output: Manifest
@@ -200,19 +141,3 @@ export function convertFromJSON(manifest: string): Manifest | false {
     return data
 }
 
-function deserializeManifests(index: {[key: string]: string}) {
-    const converted: ManifestIndex = {}
-    for (const [key, value] of Object.entries(index)) {
-        const manifest = convertFromJSON(value)
-        if (manifest) converted[key] = manifest
-    }
-    return converted
-}
-export function deserializeStack(data: {[key: string]: string}): InternalManifestIndex {
-    const index = deserializeManifests(data)
-    const internals: {[key: string]: InternalManifest<string>} = {}
-    for (const [key, value] of Object.entries(index)) {
-        internals[key] = manifestToNormalizedForm(value)
-    }
-    return linkManifests(internals)
-}

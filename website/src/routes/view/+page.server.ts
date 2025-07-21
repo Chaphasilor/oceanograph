@@ -1,5 +1,5 @@
-import { serializedMenifests } from "$lib/manifest";
+import { serializedManifests } from "$lib"
 
 export const load = async () => {
-    return {manifests: serializedMenifests}
+    return {manifests: serializedManifests}
 };

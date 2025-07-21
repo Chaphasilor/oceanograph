@@ -12,7 +12,8 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
 	},
 	"dependencies": {
-		"sass-embedded": "^1.89.2"
+		"sass-embedded": "^1.89.2",
+        "shared": "../shared/"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-static": "^3.0.8",

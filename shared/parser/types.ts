@@ -1,10 +1,62 @@
-import { URLType, Platform, Language, Capabilities, Features } from "./enums"
-import type { Version, Name, Pricing, Capability } from "./types"
+export enum Platform {
+    linux   = "Linux",
+    windows = "Windows",
+    macos   = "MacOS",
+    ios     = "iOS",
+    android = "Android",
+    web     = "Web"
+}
+export enum Language {
+    dart    = "Dart",
+    flutter = "Flutter",
+    html    = "HTML",
+    js      = "Javascript",
+    css     = "CSS",
+    swift   = "Swift",
+    java    = "Java",
+    kotlin  = "Kotlin"
+}
+
+export enum URLType {
+    github     = "Github",
+    mastodon   = "Mastodon",
+    discord    = "Discord",
+    generic    = "Generic",
+    googlePlay = "Google Play",
+    appStore   = "App Store",
+    testflight = "Test Flight",
+    fDroid     = "F-Droid",
+    flatpak    = "Flatpak",
+    aur        = "AUR",
+}
+export enum Capabilities {
+    playOn      = "Play On",
+    transcoding = "Transcoding",
+    lyrics      = "Lyrics",
+    syncLyrics  = "Synced Lyrics",
+    wSyncLyrics = "Word Synced Lyrics",
+}
+export enum Features {
+    offlinePlay       = "Offline Playback",
+    screenReader      = "Screen Reader",
+    highContrastTheme = "High Contrast Theme",
+}
+
+export type Capability = Version | true | {
+    comment: string,
+    /** When Since is missing then no exact version is known */
+    since?: Version
+}
+export type Version = string
+export type Name = string
+export type Pricing = string
+export type ManifestIndex = { [fileName: string]: Manifest }
+export type InternalManifestIndex = { [fileName: string]: InternalManifest<InternalManifest<undefined>> }
 
 export interface InternalCapability {
     supported: boolean
     comment?: string,
-    since?: Version,
+    since: Version,
 }
 
 /**

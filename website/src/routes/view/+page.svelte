@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { convertToJSON, deserializeStack } from '$lib/manifest/frontendFriendly.js';
+    import { convertToJSON, deserializeStack } from 'shared/parser/index';
 
     export let data;
     const manifests = deserializeStack(data.manifests)

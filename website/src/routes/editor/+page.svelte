@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { convertFromJSON, convertToJSON, deserializeStack, manifestToNormalizedForm } from '$lib/manifest/frontendFriendly.js';
+    import { convertFromJSON, convertToJSON, deserializeStack, manifestToNormalizedForm } from 'shared/parser/index';
 
 
     export let data;
