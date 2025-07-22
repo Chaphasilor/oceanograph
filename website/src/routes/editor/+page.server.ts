@@ -1,5 +1,9 @@
 import { serializedManifests } from "$lib";
 
 export const load = async () => {
-    return {manifests: serializedManifests}
+    console.log(serializedManifests)
+    return { manifests: serializedManifests }
 };
+
+
+export const ssr = false

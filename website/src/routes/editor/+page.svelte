@@ -1,58 +1,45 @@
 <script lang="ts">
-    import { convertFromJSON, convertToJSON, deserializeStack, manifestToNormalizedForm } from 'shared/parser/index';
+    import { parseIndex } from 'shared/parser/loaderBrowser.js';
+    import { parseJSON } from 'shared/parser/parser.js';
+    import type { Manifest } from 'shared/parser/types.js';
+    // import { parseJSON, unparseManifest } from 'shared/parser/parser.js';
 
 
     export let data;
-    const manifests = deserializeStack(data.manifests)
+    const manifests = parseIndex(data.manifests)
 
-
-    let selected = ""
-    $: fileContent = data.manifests[selected]
-    $: parsedContent = convertFromJSON(fileContent)
-    $: reFiledContent = parsedContent ? convertToJSON(parsedContent) : "Error"
-    $: internalStructure = parsedContent ? manifestToNormalizedForm(parsedContent) : "Error"
+    let select = Object.keys(manifests)[0]
+    let parsed: Manifest;
+    let errormsg = ""
+    $: rawManifest = JSON.stringify(manifests[select], (k, v) => v, 4)
+    $: try{   parsed = parseJSON(JSON.parse(rawManifest)); errormsg = ""  } catch (e:any) { errormsg = e.message }
+    $: console.log(parsed)
+    try {
+    } catch {}
 </script>
 
 
 
-<select bind:value={selected}>
-    {#each Object.keys(data.manifests) as key}
+<select bind:value={select}>
+    {#each Object.keys(manifests) as key}
         <option>{key}</option>
     {/each}
 </select>
 
-<div class="wrapper">
-    <textarea bind:value={fileContent}  />
-    
-    <div class="sticker">
-        <div>
-            <h1>Parsed</h1>
-            <pre>{JSON.stringify(parsedContent, (_, value) => value, 4)}</pre>
-        </div>
-        <div>
-            <h1>Re-File-ificated</h1>
-            <pre>{reFiledContent}</pre>
-        </div>
-        <div>
-            <h1>Internal JSON</h1>
-            <pre>{JSON.stringify(internalStructure, (_, value) => value, 4)}</pre>
-        </div>
+
+    <div>
+        <h1>Raw</h1>
+        <i>Parsed object is being printed into console</i><br><br>
+        <p>{errormsg}</p>
+        <textarea bind:value={rawManifest} cols="60" rows="60"></textarea>
     </div>
 
-</div>
 
-
-<style lang="scss">
-    .wrapper {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr;
-        max-height: 80vh;
-        .sticker {
-            overflow-y: scroll;
-            h1 {
-                font-size: 3rem;
-            }
-        }
+<style>
+    h1 {
+        font-size: 2rem;
+    }
+    textarea {
+        resize: both;
     }
 </style>

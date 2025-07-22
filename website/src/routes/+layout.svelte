@@ -9,7 +9,6 @@
         <a href="/">Home</a>
         <a href="/editor">Editor</a>
         <a href="/about">About</a>
-        <a href="/view">Inspector</a>
     </div>
     <div>
         {@render children()}
