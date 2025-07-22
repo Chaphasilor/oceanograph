@@ -110,14 +110,14 @@ export interface Manifest {
          */
         cost: Pricing | false,
         authors: Author[],
-        offical: boolean,
+        official: boolean,
         community: cURL[],
         downloads: cURL[],
         betaManifest?: string,
     },
-    jellyfinCompatibility: {
-        minServerVersion: Version,
-        maxServerVersion: Version
+    jellyfinVersion: {
+        min: Version,
+        max: Version
     },
     jellyfinCapabilites: { [key in Capabilities]?: Capability },
     appFeatures: { [key in Features]?: Capability }
@@ -159,7 +159,7 @@ export interface InternalManifest<T> {
         downloads: cURL[],
         betaManifest?: T,
     },
-    jellyfinCompatibility: {
+    jellyfinVersion: {
         minServerVersion: Version,
         maxServerVersion: Version
     },
