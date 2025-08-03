@@ -9,7 +9,7 @@ export function parseIndex(rawManifests: RawManifestIndex) {
         try {
             manifests[key] = parseJSON(value)
         } catch (e: any) {
-            console.log(`ERROR: Failed to parse ${key} Manifest: ${e.message} `)
+            console.error(`ERROR: Failed to parse "${key}", reason: ${e.message} `)
         }
     }
 

@@ -16,6 +16,10 @@ export enum Language {
     java    = "Java",
     kotlin  = "Kotlin"
 }
+export enum TandemManifestShortNames {
+    stable  = "stable",
+    beta    = "beta"
+}
 
 export enum URLType {
     github     = "Github",
@@ -71,7 +75,7 @@ export interface Manifest {
         updated: {
             at: Date,
             /**
-             * Auto increases everytime its imported into the editor
+             * Auto increases every time its imported into the editor
              */
             revisions: number
         },
@@ -80,6 +84,7 @@ export interface Manifest {
             at: Date
         }[],
         name: string,
+        description: string,
         url: URL,
         /**
          * key  = Platform
@@ -88,9 +93,9 @@ export interface Manifest {
          */
         platforms: { [key in Platform]?: Version | true },
         code: {
-            languages: Language[],
-            openSource: boolean,
             license: string
+            openSource: boolean,
+            languages: Language[],
         },
         /**
          * Can be anything since its either monthly fee,
@@ -104,12 +109,15 @@ export interface Manifest {
         official: boolean,
         community: cURL[],
         downloads: cURL[],
-        betaManifest?: string,
+        tandemManifest?: {
+            manifest: string,
+            shortName: TandemManifestShortNames
+        },
+        jellyfinVersion: {
+            min: Version,
+            max: Version
+        },
     },
-    jellyfinVersion: {
-        min: Version,
-        max: Version
-    },
-    jellyfinCapabilites: { [key in Capabilities]?: Capability },
-    appFeatures: { [key in Features]?: Capability }
+    capabilities: { [key in Capabilities]?: Capability },
+    features: { [key in Features]?: Capability }
 }

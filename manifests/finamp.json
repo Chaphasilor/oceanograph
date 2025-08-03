@@ -7,13 +7,22 @@
         "releases": [
             {
                 "version": "0.9.18",
-                "at": null
+                "at": "Sat Oct 04 2025 00:00:00 GMT+0200 (Central European Summer Time)"
+            },
+            {
+                "version": "0.9.17",
+                "at": "Fri Oct 04 2024 00:00:00 GMT+0200 (Central European Summer Time)"
+            },
+            {
+                "version": "0.9.16",
+                "at": "Wed Oct 04 2023 00:00:00 GMT+0200 (Central European Summer Time)"
             }
         ],
         "name": "Finamp",
+        "description": "Finamp is a Jellyfin music player for Android and iOS. It's meant to give you a similar listening experience as traditional streaming services such as Spotify and Apple Music, but for the music that you already own. It's free, open-source software, just like Jellyfin itself.",
         "url": "https://github.com/jmshrv/finamp",
         "platforms": {
-            "Android": true,
+            "Android": "0.7.1",
             "iOS": true,
             "Linux": true,
             "MacOS": true,
@@ -46,7 +55,7 @@
                 ]
             }
         ],
-        "official": false,
+        "official": true,
         "community": [
             {
                 "type": "Discord",
@@ -71,13 +80,16 @@
                 "url": "https://github.com/jmshrv/finamp/releases/"
             }
         ],
-        "betaManifest": "finamp-beta.json"
+        "tandemManifest": {
+            "manifest": "finamp-beta",
+            "shortName": "beta"
+        },
+        "jellyfinVersion": {
+            "min": "9.0.0",
+            "max": "10.0.0"
+        }
     },
-    "jellyfinCompatibility": {
-        "minServerVersion": "9.0.0",
-        "maxServerVersion": "10.0.0"
-    },
-    "jellyfinCapabilites": {
+    "capabilities": {
         "Play On": true,
         "Synced Lyrics": {
             "comment": "Nothing to comment on :)",
@@ -86,10 +98,9 @@
         "Word Synced Lyrics": {
             "comment": "Waiting for upstream fix"
         },
-        "Lyrics": "0.9.14",
-        "Transcoding": true
+        "Lyrics": "0.9.14"
     },
-    "appFeatures": {
+    "features": {
         "Offline Playback": true,
         "Screen Reader": "0.9.18"
     }

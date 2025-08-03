@@ -1,10 +1,14 @@
 // deno-lint-ignore-file no-explicit-any
 import { parseIndex } from "./loaderBrowser.ts";
+import { parseJSON } from "./parser.ts";
 import { RawManifestIndex } from "./types.ts";
 
 function loadManifest(file: string): object {
     const content = Deno.readTextFileSync(file)
     const obj = JSON.parse(content)
+    // validation
+    parseJSON(obj)
+
     return obj
 }
 
@@ -24,9 +28,9 @@ export function loadUnparsedManifests() {
         try {
             manifests[index] = loadManifest(`${folder}/${file.name}`)
         } catch (e: any) {
-            console.log(`ERROR: Failed to load ${file.name} Manifest: ${e.message} `)
+            console.error(`ERROR: Failed to load "${file.name}", reason: ${e.message} `)
         }
     }
-    
+
     return manifests
 }

@@ -7,11 +7,15 @@ const config = {
 	// for more information about preprocessors
 	preprocess: vitePreprocess(),
 	kit: {
+        prerender: {
+            crawl: true,
+            entries: ["*"]
+        },
         adapter: adapter(),
         alias: {
             "shared": "../shared"
         }
-    },
+    }
 };
 
 export default config;

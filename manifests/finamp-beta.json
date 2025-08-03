@@ -7,10 +7,11 @@
         "releases": [
             {
                 "version": "0.9.18",
-                "at": null
+                "at": "Sat Oct 04 2025 00:00:00 GMT+0200 (Central European Summer Time)"
             }
         ],
         "name": "Finamp Beta",
+        "description": "Finamp is a Jellyfin music player for Android and iOS. It's meant to give you a similar listening experience as traditional streaming services such as Spotify and Apple Music, but for the music that you already own. It's free, open-source software, just like Jellyfin itself.",
         "url": "https://github.com/jmshrv/finamp",
         "platforms": {
             "Android": true,
@@ -70,13 +71,17 @@
                 "type": "Github",
                 "url": "https://github.com/jmshrv/finamp/releases/"
             }
-        ]
+        ],
+        "tandemManifest": {
+            "manifest": "finamp",
+            "shortName": "stable"
+        },
+        "jellyfinVersion": {
+            "min": "9.0.0",
+            "max": "10.0.0"
+        }
     },
-    "jellyfinCompatibility": {
-        "minServerVersion": "9.0.0",
-        "maxServerVersion": "10.0.0"
-    },
-    "jellyfinCapabilites": {
+    "capabilities": {
         "Play On": true,
         "Synced Lyrics": {
             "comment": "Nothing to comment on :)",
@@ -88,7 +93,7 @@
         "Lyrics": "0.9.14",
         "Transcoding": true
     },
-    "appFeatures": {
+    "features": {
         "Offline Playback": true,
         "Screen Reader": "0.9.18"
     }

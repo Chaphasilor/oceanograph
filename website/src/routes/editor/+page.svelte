@@ -2,11 +2,8 @@
     import { parseIndex } from 'shared/parser/loaderBrowser.js';
     import { parseJSON } from 'shared/parser/parser.js';
     import type { Manifest } from 'shared/parser/types.js';
+    import { manifests } from '../../main';
     // import { parseJSON, unparseManifest } from 'shared/parser/parser.js';
-
-
-    export let data;
-    const manifests = parseIndex(data.manifests)
 
     let select = Object.keys(manifests)[0]
     let parsed: Manifest;
