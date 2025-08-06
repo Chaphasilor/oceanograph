@@ -90,7 +90,6 @@
         }
     },
     "capabilities": {
-        "Play On": true,
         "Synced Lyrics": {
             "comment": "Nothing to comment on :)",
             "since": "0.9.15"
@@ -101,7 +100,7 @@
         "Lyrics": "0.9.14"
     },
     "features": {
-        "Offline Playback": true,
+        "Offline Audio Playback": true,
         "Screen Reader": "0.9.18"
     }
 }

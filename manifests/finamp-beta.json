@@ -82,7 +82,8 @@
         }
     },
     "capabilities": {
-        "Play On": true,
+        "Report Play-State via. Play On": true,
+        "Being Controlled by Play On": true,
         "Synced Lyrics": {
             "comment": "Nothing to comment on :)",
             "since": "0.9.15"
