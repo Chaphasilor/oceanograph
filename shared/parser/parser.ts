@@ -1,5 +1,18 @@
 import { Capabilities, Features, Manifest } from "./types.ts";
-import {isCapabilityObj, dateParser, isBoolean, isString, isStringOrBool, cUrlParser, cUrlArrayParser, authorArrayParser, releaseArrayParser, isLanguageArray, isPlatformObj, isTandemManifest } from "./validators.ts";
+import {
+    authorArrayParser,
+    cUrlArrayParser,
+    cUrlParser,
+    dateParser,
+    isBoolean,
+    isCapabilityObj,
+    isLanguageArray,
+    isPlatformObj,
+    isString,
+    isStringOrBool,
+    isTandemManifest,
+    releaseArrayParser,
+} from "./validators.ts";
 
 /**
  * Doubles as validator
@@ -24,6 +37,6 @@ export function parseManifest(obj: Partial<Manifest>): Manifest {
         maxServer: isString(obj, ".maxServer", true),
         tandemManifest: isTandemManifest(obj, ".tandemManifest"),
         capabilities: isCapabilityObj(obj, ".capabilities", Capabilities),
-        features: isCapabilityObj(obj, ".features", Features)
-    }
+        features: isCapabilityObj(obj, ".features", Features),
+    };
 }

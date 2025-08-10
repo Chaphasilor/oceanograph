@@ -4,33 +4,35 @@ import { parseManifest } from "./parser.ts";
 import { RawManifestIndex } from "./types.ts";
 
 function loadManifest(file: string): object {
-    const content = Deno.readTextFileSync(file)
-    const obj = JSON.parse(content)
+    const content = Deno.readTextFileSync(file);
+    const obj = JSON.parse(content);
     // validation
-    parseManifest(obj)
+    parseManifest(obj);
 
-    return obj
+    return obj;
 }
 
-export const loadManifests = () => parseIndex(loadUnparsedManifests())
+export const loadManifests = () => parseIndex(loadUnparsedManifests());
 
 /**
  * Returns a value that can be send to the browser
  */
 export function loadUnparsedManifests() {
-    const folder = "../manifests"
+    const folder = "../manifests";
     const files = Deno.readDirSync(folder);
-    const manifests: RawManifestIndex = {}
+    const manifests: RawManifestIndex = {};
 
     for (const file of files) {
-        if (!file.isFile) continue
-        const index = file.name.replace(".json", "")
+        if (!file.isFile) continue;
+        const index = file.name.replace(".json", "");
         try {
-            manifests[index] = loadManifest(`${folder}/${file.name}`)
+            manifests[index] = loadManifest(`${folder}/${file.name}`);
         } catch (e: any) {
-            console.error(`ERROR: Failed to load "${file.name}", reason: ${e.message} `)
+            console.error(
+                `ERROR: Failed to load "${file.name}", reason: ${e.message} `,
+            );
         }
     }
 
-    return manifests
+    return manifests;
 }
