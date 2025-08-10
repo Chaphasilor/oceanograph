@@ -1,5 +1,5 @@
 // deno-lint-ignore-file no-explicit-any
-import { parseJSON } from "./parser.ts";
+import { parseManifest } from "./parser.ts";
 import { ManifestIndex, RawManifestIndex } from "./types.ts";
 
 export function parseIndex(rawManifests: RawManifestIndex) {
@@ -7,7 +7,7 @@ export function parseIndex(rawManifests: RawManifestIndex) {
 
     for (const [key, value] of Object.entries(rawManifests)) {
         try {
-            manifests[key] = parseJSON(value)
+            manifests[key] = parseManifest(value)
         } catch (e: any) {
             console.error(`ERROR: Failed to parse "${key}", reason: ${e.message} `)
         }

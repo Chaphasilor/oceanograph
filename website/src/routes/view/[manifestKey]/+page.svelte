@@ -16,27 +16,27 @@
 <div class="grd">
     <div>
         <h1>
-            {manifest.metadata.name}{manifest.metadata.official ? " (official)" : ""}
-            <a href={manifest.metadata.url.toString()}>*link*</a>
-            {#if manifest.metadata.tandemManifest}
-                <a href="/view/{manifest.metadata.tandemManifest.manifest}" data-sveltekit-reload>*{manifest.metadata.tandemManifest.shortName}*</a>
+            {manifest.name}{manifest.official ? " (official)" : ""}
+            <a href={manifest.url.toString()}>*link*</a>
+            {#if manifest.tandemManifest}
+                <a href="/view/{manifest.tandemManifest.manifest}" data-sveltekit-reload>*{manifest.tandemManifest.kind}*</a>
             {/if}
         </h1>
         <br>
-        <p>{manifest.metadata.description}</p>
+        <p>{manifest.description}</p>
         <br>
         <h2>Cost_______________</h2>
         <p>
-            {#if !manifest.metadata.cost}
+            {#if !manifest.cost}
                 Free 
             {:else}
-                {manifest.metadata.cost}
+                {manifest.cost}
             {/if}
         </p>
         <br>
         <h2>Download(s)_____</h2>
         <ul>
-            {#each manifest.metadata.downloads as download}
+            {#each manifest.downloads as download}
                 <li>
                     <a href="{download.url.toString()}">{download.type}</a>
                 </li>
@@ -45,7 +45,7 @@
         <br>
         <h2>Author(s)__________</h2>
         <div>
-            {#each manifest.metadata.authors as author}
+            {#each manifest.authors as author}
                 <Author {author} />
             {/each}
         </div>
@@ -62,7 +62,7 @@
         <br>
         <h2>Platforms________</h2>
         <ul>
-            {#each Object.entries(manifest.metadata.platforms) as [platform, detail]}
+            {#each Object.entries(manifest.platforms) as [platform, detail]}
                 <li>
                     {platform}
                     {#if typeof detail == "string"} 
@@ -74,7 +74,7 @@
         <br>
         <h2>Community_________</h2>
         <ul>
-            {#each manifest.metadata.community as community}
+            {#each manifest.community as community}
                 <li>
                     <a href="{community.url.toString()}">{community.type}</a>
                 </li>
@@ -83,11 +83,11 @@
         <br>
         <h2>Server________</h2>
         <div>
-            <p>Minimum: {manifest.metadata.jellyfinVersion.min}</p>
-            <p>Maximum: {manifest.metadata.jellyfinVersion.max}</p>
+            <p>Minimum: {manifest.minServer}</p>
+            <p>Maximum: {manifest.maxServer}</p>
         </div>
         <br><br><br><br>
-        <p>last update @ {manifest.metadata.updated.at.toLocaleDateString()}</p>
+        <p>last update @ {manifest.updatedAt.toLocaleDateString()}</p>
     </div>
     <div>
         {#each Object.values(Capabilities) as key}

@@ -1,15 +1,15 @@
 import { Capabilities, Features, Manifest, ManifestIndex } from "../parser/types.ts";
 
 export function getSortedReleases(manifest: Manifest) {
-    return manifest.metadata.releases.sort((a, b) => b.at.getTime() - a.at.getTime())
+    return manifest.releases.sort((a, b) => b.at.getTime() - a.at.getTime())
 }
 
 export function getFeatureStatus(index: ManifestIndex, manifest: keyof ManifestIndex, feature: Features) {
     const that = index[manifest]
     let other: Manifest | undefined;
 
-    if (that.metadata.tandemManifest?.manifest) {
-        other = index[that.metadata.tandemManifest?.manifest]
+    if (that.tandemManifest?.manifest) {
+        other = index[that.tandemManifest?.manifest]
     }
 
     return {
@@ -22,8 +22,8 @@ export function getCapabilityStatus(index: ManifestIndex, manifest: keyof Manife
     const that = index[manifest]
     let other: Manifest | undefined;
 
-    if (that.metadata.tandemManifest?.manifest) {
-        other = index[that.metadata.tandemManifest?.manifest]
+    if (that.tandemManifest?.manifest) {
+        other = index[that.tandemManifest?.manifest]
     }
 
     return {

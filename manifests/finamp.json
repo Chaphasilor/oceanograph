@@ -1,106 +1,117 @@
 {
-    "metadata": {
-        "updated": {
-            "at": "2025-07-19T11:00:57.703Z",
-            "revisions": 1
-        },
-        "releases": [
-            {
-                "version": "0.9.18",
-                "at": "Sat Oct 04 2025 00:00:00 GMT+0200 (Central European Summer Time)"
-            },
-            {
-                "version": "0.9.17",
-                "at": "Fri Oct 04 2024 00:00:00 GMT+0200 (Central European Summer Time)"
-            },
-            {
-                "version": "0.9.16",
-                "at": "Wed Oct 04 2023 00:00:00 GMT+0200 (Central European Summer Time)"
-            }
-        ],
-        "name": "Finamp",
-        "description": "Finamp is a Jellyfin music player for Android and iOS. It's meant to give you a similar listening experience as traditional streaming services such as Spotify and Apple Music, but for the music that you already own. It's free, open-source software, just like Jellyfin itself.",
-        "url": "https://github.com/jmshrv/finamp",
-        "platforms": {
-            "Android": "0.7.1",
-            "iOS": true,
-            "Linux": true,
-            "MacOS": true,
-            "Windows": true
-        },
-        "code": {
-            "languages": [
-                "Flutter",
-                "Dart"
-            ],
-            "license": "MLP - 2.0",
-            "openSource": true
-        },
-        "cost": false,
-        "authors": [
-            {
-                "name": "jmshrv"
-            },
-            {
-                "name": "Chaphasilor",
-                "urls": [
-                    {
-                        "type": "Github",
-                        "url": "https://github.com/Chaphasilor/"
-                    },
-                    {
-                        "type": "Mastodon",
-                        "url": "https://toot.io/@chaphasilor"
-                    }
-                ]
-            }
-        ],
-        "official": true,
-        "community": [
-            {
-                "type": "Discord",
-                "url": "https://discord.gg/xh9SZ73jWk"
-            }
-        ],
-        "downloads": [
-            {
-                "type": "Google Play",
-                "url": "https://play.google.com/store/apps/details?id=com.unicornsonlsd.finamp"
-            },
-            {
-                "type": "F-Droid",
-                "url": "https://f-droid.org/packages/com.unicornsonlsd.finamp/"
-            },
-            {
-                "type": "App Store",
-                "url": "https://apps.apple.com/us/app/finamp/id1574922594"
-            },
-            {
-                "type": "Github",
-                "url": "https://github.com/jmshrv/finamp/releases/"
-            }
-        ],
-        "tandemManifest": {
-            "manifest": "finamp-beta",
-            "shortName": "beta"
-        },
-        "jellyfinVersion": {
-            "min": "9.0.0",
-            "max": "10.0.0"
-        }
-    },
-    "capabilities": {
-        "Synced Lyrics": {
-            "comment": "Nothing to comment on :)",
-            "since": "0.9.15"
-        },
-        "Word Synced Lyrics": {
-            "comment": "Waiting for upstream fix"
-        },
-        "Lyrics": "0.9.14"
-    },
-    "features": {
-        "Offline Audio Playback": true,
-        "Screen Reader": "0.9.18"
+  "updatedAt": "2025-08-10T19:31:01.253Z",
+  "name": "Finamp",
+  "official": false,
+  "description": "Finamp is a free Jellyfin music player for Android, iOS and Desktop. It allows you to Stream and Download the music you own. It has a modern design that should feel familiar right-away, a few customizations and of course privacy!",
+  "url": {
+    "url": "https://github.com/jmshrv/finamp/tree/redesign",
+    "type": "Github"
+  },
+  "downloads": [
+    {
+      "url": "https://github.com/jmshrv/finamp/releases",
+      "type": "Github"
     }
+  ],
+  "authors": [
+    {
+      "name": "jmshrv",
+      "urls": [
+        {
+          "url": "https://github.com/jmshrv",
+          "type": "Github"
+        },
+        {
+          "url": "http://jmshrv.com/",
+          "type": "Generic"
+        }
+      ]
+    },
+    {
+      "name": "Chaphasilor",
+      "urls": [
+        {
+          "url": "https://github.com/Chaphasilor",
+          "type": "Github"
+        },
+        {
+          "url": "https://toot.io/@chaphasilor",
+          "type": "Mastodon"
+        },
+        {
+          "url": "https://twitter.com/Chaphasilor",
+          "type": "Generic"
+        }
+      ]
+    }
+  ],
+  "community": [
+    {
+      "url": "https://discord.gg/xh9SZ73jWk",
+      "type": "Discord"
+    }
+  ],
+  "releases": [
+    {
+      "at": "2025-08-10T19:32:06.841Z",
+      "version": "0.9.19"
+    },
+    {
+      "at": "2025-06-13T22:00:00.000Z",
+      "version": "0.9.18"
+    },
+    {
+      "at": "2025-04-21T22:00:00.000Z",
+      "version": "0.9.16"
+    }
+  ],
+  "platforms": {
+    "Linux": "beta",
+    "Windows": "beta",
+    "MacOS": "beta",
+    "iOS": true,
+    "Android": true
+  },
+  "license": "MIT-2.0",
+  "openSource": true,
+  "languages": [
+    null,
+    null,
+    "Dart",
+    "Flutter"
+  ],
+  "cost": "Free",
+  "capabilities": {
+    "Report Play-State via. Play On": {},
+    "Being Controlled by Play On": {},
+    "Transcoding": {},
+    "FLAC": {},
+    "MP3": {},
+    "VORBIS": {},
+    "OPUS": {},
+    "Music": {},
+    "Music Videos": {},
+    "Lyrics": {},
+    "Synced Lyrics": {}
+  },
+  "features": {
+    "Offline Audio Playback": {},
+    "View Library Offline": {},
+    "Report Offline Playbacks to Server": {},
+    "High Contrast Theme": {},
+    "Dark Theme": {},
+    "Light Theme": {},
+    "Android Auto": {},
+    "Sleep Timer": {},
+    "Find Server in network": {},
+    "Locally accessible Logs": {},
+    "Quick Connect": {},
+    "Screen Reader": {}
+  },
+  "tandemManifest": {
+    "kind": "beta",
+    "manifest": "finamp-beta"
+  },
+  "minServer": "10.11",
+  "maxServer": ""
 }

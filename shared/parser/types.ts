@@ -16,7 +16,7 @@ export enum Language {
     java    = "Java",
     kotlin  = "Kotlin"
 }
-export enum TandemManifestShortNames {
+export enum TandemManifestKinds {
     stable  = "stable",
     beta    = "beta"
 }
@@ -182,8 +182,8 @@ export const FeatureCategories = {
     ]
 }
 
-export type Capability = Version | true | {
-    comment: string,
+export type Capability = {
+    comment?: string,
     /** When Since is missing then no exact version is known */
     since?: Version
 }
@@ -203,57 +203,46 @@ export interface cURL {
 }
 export interface Author {
     name: Name,
-    urls?: cURL[]
+    urls: cURL[]
+}
+export interface Release {
+    version: Version,
+    at: Date
+}
+
+export interface TandemManifest {
+    manifest: string,
+    kind: TandemManifestKinds
 }
 
 export interface Manifest {
-    metadata: {
-        updated: {
-            at: Date,
-            /**
-             * Auto increases every time its imported into the editor
-             */
-            revisions: number
-        },
-        releases: {
-            version: Version,
-            at: Date
-        }[],
-        name: string,
-        description: string,
-        url: URL,
-        /**
-         * key  = Platform
-         * value = version ; true = version unknown
-         * missing entry = not supported
-         */
-        platforms: { [key in Platform]?: Version | true },
-        code: {
-            license: string
-            openSource: boolean,
-            languages: Language[],
-        },
-        /**
-         * Can be anything since its either monthly fee,
-         * yearly fee, onetime payment etc.
-         * Cant really put that into a single enum
-         *
-         * false = Free
-         */
-        cost: Pricing | false,
-        authors: Author[],
-        official: boolean,
-        community: cURL[],
-        downloads: cURL[],
-        tandemManifest?: {
-            manifest: string,
-            shortName: TandemManifestShortNames
-        },
-        jellyfinVersion: {
-            min: Version,
-            max: Version
-        },
-    },
+    updatedAt: Date,
+
+    name: string,
+    official: boolean,
+    description: string,
+    url: cURL,
+    downloads: cURL[],
+    
+    authors: Author[],
+    community: cURL[],
+    
+    releases: Release[],
+    /**
+     * value = version ; true = version unknown
+     * missing entry = not supported
+     */
+    platforms: { [key in Platform]?: Version | true },
+    license: string
+    openSource: boolean,
+    languages: Language[],
+    cost: Pricing,
+
+    minServer?: Version,
+    maxServer?: Version
+
+    tandemManifest?: TandemManifest,
+
     capabilities: { [key in Capabilities]?: Capability },
     features: { [key in Features]?: Capability }
 }

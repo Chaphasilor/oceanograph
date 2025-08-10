@@ -1,13 +1,13 @@
 // deno-lint-ignore-file no-explicit-any
 import { parseIndex } from "./loaderBrowser.ts";
-import { parseJSON } from "./parser.ts";
+import { parseManifest } from "./parser.ts";
 import { RawManifestIndex } from "./types.ts";
 
 function loadManifest(file: string): object {
     const content = Deno.readTextFileSync(file)
     const obj = JSON.parse(content)
     // validation
-    parseJSON(obj)
+    parseManifest(obj)
 
     return obj
 }
